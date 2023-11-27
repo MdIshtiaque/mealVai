@@ -26,14 +26,10 @@
                     class="fa fa-envelope frm-ico"></i></div>
             <div class="frm-input"><input type="text" name="name" placeholder="Full Name" class="frm-inp"><i
                     class="fa fa-user frm-ico"></i></div>
-            <div class="frm-input"><input type="password" name="password" placeholder="Password" class="frm-inp"><i
+            <div class="frm-input"><input type="password" name="password" id="pass" placeholder="Password" class="frm-inp"><i
                     class="fa fa-lock frm-ico"></i></div>
-            <div class="frm-input"><input type="password" name="password_confirmation" placeholder="Confirm Password"
-                                          class="frm-inp"><i class="fa fa-lock frm-ico"></i></div>
-            <div class="clearfix margin-bottom-20">
-                <div class="checkbox primary"><input type="checkbox" id="accept"><label for="accept">I accept Terms and
-                        Conditions</label></div>
-            </div>
+            <div class="frm-input"><input type="password" name="password_confirmation" id="confirmPass" placeholder="Confirm Password"
+                                          class="frm-inp"><i class="fa fa-lock frm-ico"></i><span id="msg" hidden></span></div>
             <button type="submit" class="frm-submit">Register<i class="fa fa-arrow-circle-right"></i></button>
             <div class="row small-spacing">
                 <div class="col-sm-12">
@@ -65,5 +61,21 @@
 <script src="{{ asset('assets/plugin/waves/waves.min') }}.js"></script>
 
 <script src="{{ asset('assets/scripts/main.min.js') }}"></script>
+<script>
+    var pass = document.getElementById('pass');
+    var confirmPass = document.getElementById('confirmPass');
+    var msg = document.getElementById('msg');
+    confirmPass.addEventListener('input', function() {
+        if(pass.value === confirmPass.value) {
+            msg.textContent = "Password matched";
+            msg.style.color = 'green';
+            msg.hidden = false
+        }else {
+            msg.textContent = "Password not matched";
+            msg.style.color = 'red';
+            msg.hidden = false
+        }
+    });
+</script>
 </body>
 </html>
