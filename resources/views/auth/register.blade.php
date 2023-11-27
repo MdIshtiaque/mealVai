@@ -30,7 +30,7 @@
                     class="fa fa-lock frm-ico"></i></div>
             <div class="frm-input"><input type="password" name="password_confirmation" id="confirmPass" placeholder="Confirm Password"
                                           class="frm-inp"><i class="fa fa-lock frm-ico"></i><span id="msg" hidden></span></div>
-            <button type="submit" class="frm-submit">Register<i class="fa fa-arrow-circle-right"></i></button>
+            <button type="submit" class="frm-submit" id="btnReg">Register<i class="fa fa-arrow-circle-right"></i></button>
             <div class="row small-spacing">
                 <div class="col-sm-12">
                     <div class="txt-login-with txt-center">or register with</div>
@@ -65,15 +65,18 @@
     var pass = document.getElementById('pass');
     var confirmPass = document.getElementById('confirmPass');
     var msg = document.getElementById('msg');
+    var btn = document.getElementById('btnReg');
     confirmPass.addEventListener('input', function() {
         if(pass.value === confirmPass.value) {
             msg.textContent = "Password matched";
             msg.style.color = 'green';
-            msg.hidden = false
+            msg.hidden = false;
+            btn.disabled = false;
         }else {
             msg.textContent = "Password not matched";
             msg.style.color = 'red';
-            msg.hidden = false
+            msg.hidden = false;
+            btn.disabled = true;
         }
     });
 </script>
