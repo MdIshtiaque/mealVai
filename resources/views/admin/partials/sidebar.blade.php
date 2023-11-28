@@ -11,14 +11,11 @@
             </li>
             <li>
                 <a class="waves-effect parent-item js__control" href="#"><i
-                        class="menu-icon mdi mdi-flower"></i><span>Icons</span><span
+                        class="menu-icon mdi mdi-flower"></i><span>Meal System</span><span
                         class="menu-arrow fa fa-angle-down"></span></a>
                 <ul class="sub-menu js__content">
-                    <li><a href="icons-font-awesome-icons.html">Font Awesome</a></li>
-                    <li><a href="icons-fontello.html">Fontello</a></li>
-                    <li><a href="icons-material-icons.html">Material Design Icons</a></li>
-                    <li><a href="icons-material-design-iconic.html">Material Design Iconic Font</a></li>
-                    <li><a href="icons-themify-icons.html">Themify Icons</a></li>
+                    <li><a href="{{ route('create.meal.system') }}">Create New System</a></li>
+                    <li><a href="icons-font-awesome-icons.html">List</a></li>
                 </ul>
                 <!-- /.sub-menu js__content -->
             </li>
