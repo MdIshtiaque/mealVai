@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MealSystemController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,13 +17,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('admin.master');
-//});
-
-//Route::get('/dashboard', function () {
-//    return view('dashboard');
-//})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['auth', 'verifyUser'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -33,7 +27,6 @@ Route::middleware(['auth', 'verifyUser'])->group(function () {
     Route::get('/create-meal-system', [MealSystemController::class, 'createMealSystemView'])->name('create.meal.system');
 });
 
-Route::get('test', function () {
-   return view('auth.verify-code');
-});
+Route::get('verification/{user}', [RegisteredUserController::class, 'sendMail'])->name('sendMail');
+
 require __DIR__.'/auth.php';

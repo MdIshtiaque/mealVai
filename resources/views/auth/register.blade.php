@@ -22,13 +22,13 @@
         <div class="inside">
             <div class="title"><strong>Admin</strong>Bhai</div>
             <div class="frm-title">Register</div>
-            <div class="frm-input"><input type="email" name="email" placeholder="Email" class="frm-inp"><i
+            <div class="frm-input"><input type="email" name="email" placeholder="Email" required class="frm-inp"><i
                     class="fa fa-envelope frm-ico"></i></div>
-            <div class="frm-input"><input type="text" name="name" placeholder="Full Name" class="frm-inp"><i
+            <div class="frm-input"><input type="text" name="name" placeholder="Full Name" required class="frm-inp"><i
                     class="fa fa-user frm-ico"></i></div>
-            <div class="frm-input"><input type="password" name="password" id="pass" placeholder="Password" class="frm-inp"><i
+            <div class="frm-input"><input type="password" name="password" id="pass" placeholder="Password" required class="frm-inp"><i
                     class="fa fa-lock frm-ico"></i></div>
-            <div class="frm-input"><input type="password" name="password_confirmation" id="confirmPass" placeholder="Confirm Password"
+            <div class="frm-input"><input type="password" name="password_confirmation" id="confirmPass" placeholder="Confirm Password" required
                                           class="frm-inp"><i class="fa fa-lock frm-ico"></i><span id="msg" hidden></span></div>
             <button type="submit" class="frm-submit" id="btnReg">Register<i class="fa fa-arrow-circle-right"></i></button>
             <div class="row small-spacing">
