@@ -37,11 +37,12 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Verification Code</h5>
-                    <form action="#">
+                    <form action="{{ route('verify') }}" method="post">
+                        @csrf
                         <!-- Verification Code Input -->
                         <div class="form-group">
                             <label for="code">Enter Code:</label>
-                            <input type="text" class="form-control" id="code" name="code" maxlength="6" pattern="\d{6}" required>
+                            <input type="text" id="code" name="code" maxlength="6" pattern="\d{6}" required>
                         </div>
 
                         <!-- Submit Button -->

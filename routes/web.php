@@ -26,7 +26,7 @@ Route::middleware(['auth', 'verifyUser'])->group(function () {
     Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::get('/create-meal-system', [MealSystemController::class, 'createMealSystemView'])->name('create.meal.system');
 });
+Route::post('verifying', [RegisteredUserController::class, 'verify'])->name('verify');
 
-Route::get('verification/{user}', [RegisteredUserController::class, 'sendMail'])->name('sendMail');
 
 require __DIR__.'/auth.php';

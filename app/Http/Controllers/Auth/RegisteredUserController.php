@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SendVerificationCodeJob;
 use App\Mail\SendVerificationCodeMail;
 use App\Models\User;
+use App\Models\VerificationCode;
 use App\Providers\RouteServiceProvider;
 use Exception;
 use Illuminate\Auth\Events\Registered;
@@ -35,24 +37,14 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
-
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-
-//        $mailData = [
-//            'title' => 'Verification code for verify your account',
-//            'body' => 'This is your verification code',
-//            'code' => generateUniqueVerificationCode(),
-//            'name' => $request->name,
-//        ];
-//
-//        Mail::to($request->email)->send(new SendVerificationCodeMail($mailData));
 
         event(new Registered($user));
 
@@ -64,20 +56,31 @@ class RegisteredUserController extends Controller
 //        return redirect(RouteServiceProvider::HOME);
     }
 
-    public function sendMail(User $user) {
+    public function sendMail(User $user)
+    {
         try {
-            $mailData = [
-                'title' => 'Verification code for verify your account',
-                'body' => 'This is your verification code',
-                'code' => generateUniqueVerificationCode(),
-                'name' => $user->name,
-            ];
-//            dd($user->email);
-            Mail::to($user->email)->send(new SendVerificationCodeMail($mailData));
-        }catch (Exception $exception) {
+            SendVerificationCodeJob::dispatch($user);
+        } catch (Exception $exception) {
             dd($exception);
         }
 
         return view('auth.verify-code', ['user' => $user]);
+    }
+
+    public function verify(Request $request)
+    {
+        $user = VerificationCode::with('user')->where('user_id', auth()->user()->id)->first();
+        if ($request->code != $user->code) {
+            return back();
+        } else {
+            $user->user->update([
+                'is_verified' => true
+            ]);
+
+            $user->delete();
+
+            flash()->addSuccess('You have successfully Logged in');
+            return redirect()->route('dashboard');
+        }
     }
 }
