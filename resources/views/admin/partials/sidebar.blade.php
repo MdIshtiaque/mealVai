@@ -20,12 +20,23 @@
                 <!-- /.sub-menu js__content -->
             </li>
             <li>
+                <a class="waves-effect parent-item js__control" href="#"><i
+                        class="menu-icon mdi mdi-nature-people"></i><span>Friends</span><span
+                        class="menu-arrow fa fa-angle-down"></span></a>
+                <ul class="sub-menu js__content">
+                    <li><a href="{{ route('add.friend') }}">Add Friend</a></li>
+                    <li><a href="icons-font-awesome-icons.html">List</a></li>
+                </ul>
+                <!-- /.sub-menu js__content -->
+            </li>
+            <li>
                 <a class="waves-effect" href="calendar.html"><i
                         class="menu-icon mdi mdi-calendar-multiple"></i><span>Calendar</span><span
                         class="notice notice-danger">New</span></a>
             </li>
             <li>
-                <a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-chart-bar"></i><span>Charts</span><span
+                <a class="waves-effect parent-item js__control" href="#"><i
+                        class="menu-icon mdi mdi-chart-bar"></i><span>Charts</span><span
                         class="menu-arrow fa fa-angle-down"></span></a>
                 <ul class="sub-menu js__content">
                     <li><a href="chart-3d.html">3D Charts</a></li>
@@ -75,7 +86,8 @@
             </li>
             <li>
                 <a class="waves-effect parent-item js__control" href="#"><i
-                        class="menu-icon mdi mdi-pencil-box"></i><span>Forms</span><span class="notice notice-blue">7</span></a>
+                        class="menu-icon mdi mdi-pencil-box"></i><span>Forms</span><span
+                        class="notice notice-blue">7</span></a>
                 <ul class="sub-menu js__content">
                     <li><a href="form-elements.html">General Elements</a></li>
                     <li><a href="form-advanced.html">Advanced Form</a></li>

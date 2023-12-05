@@ -44,4 +44,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(VerificationCode::class);
     }
+
+    public function friendRequests(): HasMany
+    {
+        return $this->hasMany(FriendRequest::class, 'requester_id', 'id');
+    }
 }

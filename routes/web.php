@@ -3,7 +3,9 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MealSystemController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\FriendController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +27,12 @@ Route::middleware(['auth', 'verifyUser'])->group(function () {
 
     Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::get('/create-meal-system', [MealSystemController::class, 'createMealSystemView'])->name('create.meal.system');
+
+    Route::get('/friend', [FriendController::class, 'addFriend'])->name('add.friend');
+    Route::post('/send-friend-request', [FriendController::class, 'sendRequest'])->name('send.request');
+    Route::post('/cancel-friend-request', [FriendController::class, 'cancelRequest'])->name('cancel.request');
+    Route::get('/search', [SearchController::class, 'searchUsers'])->name('search.users');
+
 });
 Route::post('verifying', [RegisteredUserController::class, 'verify'])->name('verify');
 
