@@ -1,5 +1,5 @@
-$(document).ready(function() {
-    $('#search').on('keyup', function() {
+$(document).ready(function () {
+    $('#search').on('keyup', function () {
         var query = $(this).val();
         if (query.trim() === '') {
             // Clear the search results if the query is empty
@@ -9,8 +9,8 @@ $(document).ready(function() {
         $.ajax({
             url: '/search', // Your Laravel route
             method: 'GET',
-            data: { query: query },
-            success: function(data) {
+            data: {query: query},
+            success: function (data) {
                 // Update the search results section with the data received from the server
                 $('#search-results').html(data);
             }

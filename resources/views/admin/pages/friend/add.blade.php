@@ -42,9 +42,10 @@
 
                     <tr class="details">
                         <td style="width: 100% !important;">
-                            <div class="form-group" style="width: 102% !important;">
+                            <div class="form-group">
                                 <input type="text" name="search" id="search" placeholder="Search by name or email"
-                                       class="form-control">
+                                       class="form-control form-control-lg">
+                                <!-- Larger form control for better visibility -->
                             </div>
                         </td>
 

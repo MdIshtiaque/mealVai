@@ -1,4 +1,4 @@
-$(document).on('click', '.add-friend', function() {
+$(document).on('click', '.add-friend', function () {
     var userId = $(this).data('user-id');
     var button = $(this);
 
@@ -11,10 +11,12 @@ $(document).on('click', '.add-friend', function() {
         data: {
             user_id: userId,
         },
-        success: function(data) {
-            if(data.success) {
+        success: function (data) {
+            if (data.success) {
                 button.html('<i class="fa fa-arrow-right"></i> Cancel');
                 button.removeClass('add-friend').addClass('cancel-friend-request');
+
+                flasher.flash(data.message, 'success');
             }
         }
     });

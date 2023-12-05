@@ -1,11 +1,11 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\FriendController;
 use App\Http\Controllers\Admin\MealSystemController;
+use App\Http\Controllers\Admin\SearchController;
 use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\FriendController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 /*
