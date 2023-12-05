@@ -1,5 +1,4 @@
-<script src="{{ asset('assets/script/html5shiv.min.js') }}"></script>
-<script src="{{ asset('assets/script/respond.min.js') }}"></script>
+
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="{{ asset('assets/scripts/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/scripts/modernizr.min.js') }}"></script>
@@ -30,4 +29,36 @@
 <script src="{{ asset('assets/scripts/main.min.js') }}"></script>
 <script src="{{ asset('assets/color-switcher/color-switcher.min.js') }}"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
+<script>
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('0b44e06044b07726d365', {
+        cluster: 'ap2',
+    });
+
+    var channel = pusher.subscribe('user.{{ auth()->user()->id }}');
+
+    channel.bind('pusher:subscription_succeeded', function() {
+        console.log('Successfully subscribed to the channel!');
+    });
+    channel.bind('friend_request_sent', function( data = "Emon") {
+        console.log("Received data:", data);
+
+
+        var newNotificationHtml = `
+        <li>
+            <a href="#">
+                <span class="avatar"><img src="http://placehold.it/80x80" alt=""></span>
+                <span class="name">${data.requestedId}</span>
+                <span class="desc">${data.message}</span>
+                <span class="time">Just now</span>
+            </a>
+        </li>`;
+
+        $('#notification-popup .notice-list').prepend(newNotificationHtml);
+    });
+
+</script>
 @stack('js')

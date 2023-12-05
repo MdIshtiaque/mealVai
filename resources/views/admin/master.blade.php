@@ -34,5 +34,6 @@
 </div>
 
 @include('admin.inc.script')
+
 </body>
 </html>
