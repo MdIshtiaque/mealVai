@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\FriendController;
 use App\Http\Controllers\Admin\MealSystemController;
 use App\Http\Controllers\Admin\SearchController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,9 @@ Route::middleware(['auth', 'verifyUser'])->group(function () {
     Route::get('/search', [SearchController::class, 'searchUsers'])->name('search.users');
 
 });
+Route::post('/notifications/{id}/mark-read', [NotificationController::class, 'markAsRead']);
+Route::get('/notifications', [NotificationController::class, 'getNotifications']);
+
 Route::post('verifying', [RegisteredUserController::class, 'verify'])->name('verify');
 
 

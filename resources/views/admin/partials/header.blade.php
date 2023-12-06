@@ -35,7 +35,7 @@
         </div>
         <!-- /.ico-item -->
         <a href="#" class="ico-item fa fa-envelope notice-alarm js__toggle_open" data-target="#message-popup"></a>
-        <a href="#" class="ico-item pulse"><span class="ico-item fa fa-bell notice-alarm js__toggle_open"
+        <a href="#" class="ico-item pulse" id="notification-icon"><span class="ico-item fa fa-bell notice-alarm js__toggle_open"
                                                  data-target="#notification-popup"></span></a>
         <div class="ico-item">
             <img src="http://placehold.it/80x80" alt="" class="ico-img">

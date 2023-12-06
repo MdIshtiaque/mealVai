@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin;
 use App\Events\FriendRequestSent;
 use App\Http\Controllers\Controller;
 use App\Models\FriendRequest;
+use App\services\NotificationService;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
@@ -33,7 +34,13 @@ class FriendController extends Controller
 
         $requesterName = auth()->user()->name;
 
-        event(new FriendRequestSent($friendRequest->requested_id, 'Friend Request Sent'));
+//        event(new FriendRequestSent($friendRequest->requested_id, 'Friend Request Sent'));
+        $notificationService = new NotificationService();
+        $notificationService->createAndDispatchNotification(
+            $friendRequest->requested_id,
+            'friend_request',
+            ['message' => 'A New Friend Request from ' . $friendRequest->sender->name]
+        );
         DB::commit();
         return response()->json(['success' => true]);
     }
